@@ -4,7 +4,7 @@ export const PlayerSchema = new mongoose.Schema(
   {
     name: { type: String },
     email: { type: String, unique: true },
-    phoneNumber: { type: String, unique: true },
+    phoneNumber: { type: String },
     ranking: { type: String },
     position: { type: Number },
     urlPhotoPlayer: { type: String },
