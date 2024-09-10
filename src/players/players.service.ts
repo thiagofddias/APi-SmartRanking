@@ -49,7 +49,7 @@ export class PlayersService {
     const playerExists = await this.playerModel.findOne({ _id }).exec();
 
     if (!playerExists) {
-      throw new NotFoundException(`Player with email ${_id} not found`);
+      throw new NotFoundException(`Player with id ${_id} not found`);
     }
 
     return playerExists;
@@ -59,7 +59,7 @@ export class PlayersService {
     const playerExists = await this.playerModel.findOne({ _id }).exec();
 
     if (!playerExists) {
-      throw new NotFoundException(`Player with email ${_id} not found`);
+      throw new NotFoundException(`Player with id ${_id} not found`);
     }
 
     return await this.playerModel.deleteMany({ _id }).exec();
