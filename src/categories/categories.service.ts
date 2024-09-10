@@ -44,6 +44,8 @@ export class CategoriesService {
       .findOne({ category })
       .exec();
 
+    console.log(categoryFound);
+
     if (!categoryFound) {
       throw new NotFoundException('Category not found');
     }
