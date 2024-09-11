@@ -39,15 +39,13 @@ export class CategoriesService {
     return await this.categoryModule.find().populate('players').exec();
   }
 
-  async findCategory(category: string): Promise<Category> {
+  async findCategoryFromPlayer(category: string): Promise<Category> {
     const categoryFound = await this.categoryModule
       .findOne({ category })
       .exec();
 
-    console.log(categoryFound);
-
     if (!categoryFound) {
-      throw new NotFoundException('Category not found');
+      throw new NotFoundException(`'Category ${category} not found'`);
     }
 
     return categoryFound;

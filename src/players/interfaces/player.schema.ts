@@ -8,6 +8,12 @@ export const PlayerSchema = new mongoose.Schema(
     ranking: { type: String },
     position: { type: Number },
     urlPhotoPlayer: { type: String },
+    category: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Category',
+      },
+    ],
   },
   { timestamps: true, collection: 'players' },
 );

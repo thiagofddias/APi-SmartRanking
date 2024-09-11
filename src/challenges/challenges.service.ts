@@ -55,18 +55,7 @@ export class ChallengesService {
       throw new BadRequestException(`The applicant needs to be a player!`);
     }
 
-    const categoryPlayer = await this.categoriesService.findCategory(
-      createChallengeDto.applicant,
-    );
-
-    if (!categoryPlayer) {
-      throw new BadRequestException(
-        `The applicant needs to be a player with category!`,
-      );
-    }
-
     const challengeCreated = new this.challengeModel(createChallengeDto);
-    challengeCreated.category = categoryPlayer.category;
     challengeCreated.dateTimeRequest = new Date();
 
     challengeCreated.status = ChallengeStatus.PENDING;
@@ -77,7 +66,6 @@ export class ChallengesService {
   async consultAllChallenges(): Promise<Array<Challenge>> {
     return await this.challengeModel
       .find()
-      .populate('applicant')
       .populate('players')
       .populate('match')
       .exec();
@@ -96,7 +84,6 @@ export class ChallengesService {
       .find()
       .where('players')
       .in(_id)
-      .populate('applicant')
       .populate('players')
       .populate('match')
       .exec();

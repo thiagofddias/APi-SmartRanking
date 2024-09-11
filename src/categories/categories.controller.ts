@@ -32,7 +32,7 @@ export class CategoriesController {
 
   @Get('/:category')
   async findCategory(@Param('category') category: string): Promise<Category> {
-    return await this.categoriesService.findCategory(category);
+    return await this.categoriesService.findCategoryFromPlayer(category);
   }
 
   @Put('/:category')

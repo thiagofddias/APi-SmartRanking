@@ -42,18 +42,20 @@ export class ChallengesController {
       : await this.challengesService.consultAllChallenges();
   }
 
-  @Put('/:challenge')
-  async atualizarDesafio(
+  @Put('/:_id')
+  async updateChallenge(
     @Body(ChallengeStatusValidationPipe) updateChallenge: UpdateChallengeDto,
-    @Param('challenge') _id: string,
+    @Param('_id') _id: string,
   ): Promise<void> {
+    console.log(updateChallenge);
+    console.log('id:' + _id);
     await this.challengesService.updateChallenge(_id, updateChallenge);
   }
 
   @Post('/:challenge/match/')
   async assignChallengeMatch(
     @Body(ValidationPipe) assignChallengeMatchDto: AssignChallengeToMatchDto,
-    @Param('desafio') _id: string,
+    @Param('challenge') _id: string,
   ): Promise<void> {
     return await this.challengesService.AssignChallengeMatch(
       _id,

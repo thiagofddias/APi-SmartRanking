@@ -7,4 +7,5 @@ export interface Player extends Document {
   ranking: string;
   positionRanking: number;
   urlPhotoPlayer: string;
+  category: string;
 }
